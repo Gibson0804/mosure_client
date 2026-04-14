@@ -1,0 +1,142 @@
+{
+	"pages": [
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "我的项目",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/chat/index",
+			"style": {
+				"navigationBarTitleText": "项目 AI",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/chat/session",
+			"style": {
+				"navigationBarTitleText": "会话",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/content/molds",
+			"style": {
+				"navigationBarTitleText": "内容模型"
+			}
+		},
+		{
+			"path": "pages/content/list",
+			"style": {
+				"navigationBarTitleText": "内容列表"
+			}
+		},
+		{
+			"path": "pages/content/detail",
+			"style": {
+				"navigationBarTitleText": "内容详情"
+			}
+		},
+		{
+			"path": "pages/content/subject",
+			"style": {
+				"navigationBarTitleText": "单页内容"
+			}
+		},
+		{
+			"path": "pages/monitor/functions",
+			"style": {
+				"navigationBarTitleText": "云函数"
+			}
+		},
+		{
+			"path": "pages/monitor/crons",
+			"style": {
+				"navigationBarTitleText": "定时任务"
+			}
+		},
+		{
+			"path": "pages/user/index",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/user/servers",
+			"style": {
+				"navigationBarTitleText": "服务器管理"
+			}
+		},
+		{
+			"path": "pages/webview/webview",
+			"style": {
+				"navigationBarTitleText": "加载中..."
+			}
+		},
+		{
+			"path": "pages/kb/index",
+			"style": {
+				"navigationBarTitleText": "知识库",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/kb/editor",
+			"style": {
+				"navigationBarTitleText": "编辑文章",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/kb/detail",
+			"style": {
+				"navigationBarTitleText": "文章详情",
+				"navigationStyle": "custom"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "HCMS",
+		"navigationBarBackgroundColor": "#ffffff",
+		"backgroundColor": "#eef3f7"
+	},
+	"tabBar": {
+		"color": "#7b8797",
+		"selectedColor": "#0f766e",
+		"backgroundColor": "#f8fbfd",
+		"borderStyle": "white",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "项目",
+				"iconPath": "static/icons/project.png",
+				"selectedIconPath": "static/icons/project-active.png"
+			},
+			{
+				"pagePath": "pages/kb/index",
+				"text": "知识库",
+				"iconPath": "static/icons/knowledge.png",
+				"selectedIconPath": "static/icons/knowledge-active.png"
+			},
+			{
+				"pagePath": "pages/user/index",
+				"text": "我的",
+				"iconPath": "static/icons/user.png",
+				"selectedIconPath": "static/icons/user-active.png"
+			}
+		]
+	},
+	"uniIdRouter": {}
+}

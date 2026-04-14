@@ -1,0 +1,8 @@
+/node_modules
+/unpackage/dist
+/unpackage/cache
+/unpackage/debug
+/unpackage/release
+/.hbuilderx
+/.idea
+/.DS_Store
