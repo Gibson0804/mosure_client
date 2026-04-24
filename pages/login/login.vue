@@ -14,7 +14,7 @@
 
     <view class="page-shell">
       <view class="hero-copy">
-        <text class="eyebrow">HCMS Client</text>
+        <text class="eyebrow">Mosure Client</text>
         <text class="hero-title">内容、协作与项目管理的移动工作台。</text>
       </view>
 
@@ -24,7 +24,7 @@
             <image src="/static/logo.png" mode="aspectFit" class="brand-logo" />
           </view>
           <view class="logo-copy">
-            <text class="app-name">HCMS</text>
+            <text class="app-name">Mosure</text>
             <text class="app-desc">连接你的服务器并进入工作区</text>
           </view>
         </view>
@@ -55,7 +55,6 @@
             class="input-field"
             type="text"
             name="email"
-            value="173336670@qq.com"
             v-model="formData.email"
             placeholder="邮箱"
             :disabled="loading"
@@ -72,7 +71,6 @@
             name="password"
             :type="showPassword ? 'text' : 'password'"
             v-model="formData.password"
-            value="123123123"
             placeholder="密码"
             :disabled="loading"
             @confirm="handleLogin"
@@ -91,10 +89,19 @@
         >
           <text>{{ loading ? '登录中...' : '进入工作台' }}</text>
         </button>
+
+        <button
+          class="scan-login-btn"
+          :disabled="loading"
+          @click="handleScan"
+        >
+          <image src="/static/icons/scan.png" class="scan-mini-icon" mode="aspectFit" />
+          <text>扫码登录</text>
+        </button>
       </view>
 
       <view class="version-info">
-        <text>HCMS Client v1.0.0</text>
+        <text>Mosure Client v1.0.0</text>
       </view>
     </view>
 
@@ -134,8 +141,8 @@ const authStore = useAuthStore()
 
 const formData = reactive({
   serverUrl: '',
-  email: '173336670@qq.com',
-  password: '123123123'
+  email: '',
+  password: ''
 })
 
 const loading = ref(false)
@@ -220,11 +227,10 @@ const handleScan = () => {
 
   uni.scanCode({
     success: async (res) => {
-      const content = res.result
+      const content = (res.result || '').trim()
 
       try {
-        const qrData = JSON.parse(content)
-        const { domain, token } = qrData
+        const { domain, token } = parseScanPayload(content)
 
         if (!domain || !token) {
           uni.showToast({ title: '二维码格式错误', icon: 'none' })
@@ -249,6 +255,38 @@ const handleScan = () => {
       uni.showToast({ title: '扫码失败: ' + (err.errMsg || '未知错误'), icon: 'none' })
     }
   })
+}
+
+const parseScanPayload = (content) => {
+  const fallback = { domain: '', token: '' }
+  if (!content) return fallback
+
+  const parseObject = (obj) => {
+    const domain = obj.domain || obj.server || obj.server_url || obj.serverUrl || obj.host || ''
+    const token = obj.token || obj.login_token || obj.loginToken || obj.qr_token || ''
+    return { domain: String(domain).trim(), token: String(token).trim() }
+  }
+
+  if (content.startsWith('{')) {
+    try {
+      return parseObject(JSON.parse(content))
+    } catch (e) {
+      return fallback
+    }
+  }
+
+  if (content.includes('://') && content.includes('?')) {
+    try {
+      const url = new URL(content)
+      const token = (url.searchParams.get('token') || url.searchParams.get('login_token') || '').trim()
+      const domain = `${url.protocol}//${url.host}`.trim()
+      return { domain, token }
+    } catch (e) {
+      return fallback
+    }
+  }
+
+  return fallback
 }
 </script>
 
@@ -464,6 +502,27 @@ const handleScan = () => {
 
 .login-btn[disabled] {
   opacity: 0.58;
+}
+
+.scan-login-btn {
+  width: 100%;
+  height: 88rpx;
+  margin-top: 14rpx;
+  border-radius: 24rpx;
+  border: 1rpx solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  font-size: 27rpx;
+  font-weight: 600;
+}
+
+.scan-mini-icon {
+  width: 30rpx;
+  height: 30rpx;
 }
 
 .version-info {

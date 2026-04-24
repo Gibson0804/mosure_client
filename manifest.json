@@ -1,7 +1,7 @@
 {
-    "name" : "织云HCMS",
+    "name" : "Mosure",
     "appid" : "__UNI__49DB200",
-    "description" : "织云HCMS移动管理端",
+    "description" : "Mosure移动管理端",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,

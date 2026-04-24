@@ -3,15 +3,15 @@
  */
 
 const STORAGE_KEYS = {
-  TOKEN: 'hcms_token',
-  CLIENT_TYPE: 'hcms_client_type',
-  CLIENT_SESSION_KEY: 'hcms_client_session_key',
-  USER: 'hcms_user',
-  SERVER_URL: 'hcms_server_url',
-  SERVER_HISTORY: 'hcms_server_history',
-  CURRENT_PROJECT: 'hcms_current_project',
-  CHAT_DRAFT: 'hcms_chat_draft',
-  CHAT_SESSION_CONTEXT: 'hcms_chat_session_context'
+  TOKEN: 'mosure_token',
+  CLIENT_TYPE: 'mosure_client_type',
+  CLIENT_SESSION_KEY: 'mosure_client_session_key',
+  USER: 'mosure_user',
+  SERVER_URL: 'mosure_server_url',
+  SERVER_HISTORY: 'mosure_server_history',
+  CURRENT_PROJECT: 'mosure_current_project',
+  CHAT_DRAFT: 'mosure_chat_draft',
+  CHAT_SESSION_CONTEXT: 'mosure_chat_session_context'
 }
 
 export const storage = {

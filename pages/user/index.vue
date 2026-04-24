@@ -117,8 +117,8 @@ const goToServers = () => {
 
 const showAbout = () => {
   uni.showModal({
-    title: 'HCMS Client',
-    content: '版本: 1.0.0\n\nHCMS 内容管理系统移动端\n\n© 2025 HCMS',
+    title: 'Mosure Client',
+    content: '版本: 1.0.0\n\nMosure 内容管理系统移动端\n\n© 2025 Mosure',
     showCancel: false
   })
 }
